@@ -102,3 +102,10 @@ dist
 
 # TernJS port file
 .tern-port
+
+# vscode
+.vscode
+
+# secrets.js(API_KEY)
+src/secrets.js
+
