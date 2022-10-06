@@ -1,8 +1,16 @@
+const API = axios.create({
+    baseURL: 'https://api.themoviedb.org/3/',
+    header: {
+        'Content-Type': 'application/json;charset=utf-8'
+    },
+    params: {
+        'api_key': API_KEY,
+    },
+});
 async function getTrendingSeriesPreview() {
-    const res = await  fetch('https://api.themoviedb.org/3/trending/tv/day?api_key=' + API_KEY);
-    const data = await res.json();
-
+    const {data} = await  API('trending/tv/day');
     const series = data.results;
+
     series.forEach(serie => {
         const trendingPreviewSeriesContainer = document.querySelector('#trendingPreview .trendingPreview-serieList');
         const serieContainer = document.createElement('div');
@@ -21,10 +29,9 @@ async function getTrendingSeriesPreview() {
     // console.log(series);
 }
 async function getCategoriesPreview() {
-    const res = await  fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=' + API_KEY);
-    const data = await res.json();
-
+    const {data} = await  API('genre/movie/list');
     const categories = data.genres;
+    
     categories.forEach(category => {
         const categoriesPreviewSeriesContainer = document.querySelector('#categoriesPreview .categoriesPreview-list');
         const categoryContainer = document.createElement('div');
@@ -38,11 +45,8 @@ async function getCategoriesPreview() {
         categoryTitle.appendChild(CategoryTitleText);
         categoryContainer.appendChild(categoryTitle);
         categoriesPreviewSeriesContainer.appendChild(categoryContainer);
-
-        console.log(category.id, category.name)
     });
 }
-
 
 getTrendingSeriesPreview();
 getCategoriesPreview();
