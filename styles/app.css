@@ -234,25 +234,25 @@ button {
   width: 8px;
   height: 8px;
 }
-#id28 { --idColor: var(--yellow); }
-#id12 { --idColor: var(--red); }
-#id16 { --idColor: var(--green); }
-#id35 { --idColor: var(--lightBlue); }
-#id80 { --idColor: var(--darkBlue); }
-#id99 { --idColor: var(--purple-dark-1); }
-#id18 { --idColor: var(--purple-medium-1); }
-#id10751 { --idColor: var(--yellow); }
-#id14 { --idColor: var(--red); }
-#id36 { --idColor: var(--green); }
-#id27 { --idColor: var(--lightBlue); }
-#id10402 { --idColor: var(--darkBlue); }
-#id9648 { --idColor: var(--purple-dark-1); }
-#id10749 { --idColor: var(--purple-medium-1); }
-#id878 { --idColor: var(--yellow); }
-#id10770 { --idColor: var(--red); }
-#id53 { --idColor: var(--green); }
-#id10752 { --idColor: var(--lightBlue); }
-#id37 { --idColor: var(--darkBlue); }
+#id28 { --idColor: var(--yellow); }/* name: Action*/
+#id12 { --idColor: var(--red); }/* name: Adventure*/
+#id16 { --idColor: var(--green); }/* name: Animation*/
+#id35 { --idColor: var(--lightBlue); }/* name: Comedy*/
+#id80 { --idColor: var(--darkBlue); }/* name: Crime*/
+#id99 { --idColor: var(--purple-dark-1); }/* name: Documentary*/
+#id18 { --idColor: var(--purple-medium-1); }/* name: Drama*/
+#id10751 { --idColor: var(--yellow); }/* name: Family*/
+#id14 { --idColor: var(--red); }/* name: Fantasy*/
+#id36 { --idColor: var(--green); }/* name: History*/
+#id27 { --idColor: var(--lightBlue); }/* name: Horror*/
+#id10402 { --idColor: var(--darkBlue); }/* name: Music*/
+#id9648 { --idColor: var(--purple-dark-1); }/* name: Mystery*/
+#id10749 { --idColor: var(--purple-medium-1); }/* name: Romance*/
+#id878 { --idColor: var(--yellow); }/* name: Science Fiction*/
+#id10770 { --idColor: var(--red); }/* name: TV Movie*/
+#id53 { --idColor: var(--green); }/* name: Thriller*/
+#id10752 { --idColor: var(--lightBlue); }/* name: War*/
+#id37 { --idColor: var(--darkBlue); }/* name: Western*/
 
 
 /* Generic List (search, trending & category) */

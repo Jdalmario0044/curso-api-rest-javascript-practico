@@ -18,8 +18,31 @@ async function getTrendingSeriesPreview() {
         serieContainer.appendChild(serieImg); 
         trendingPreviewSeriesContainer.appendChild(serieContainer);
     });
-
     // console.log(series);
 }
+async function getCategoriesPreview() {
+    const res = await  fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=' + API_KEY);
+    const data = await res.json();
+
+    const categories = data.genres;
+    categories.forEach(category => {
+        const categoriesPreviewSeriesContainer = document.querySelector('#categoriesPreview .categoriesPreview-list');
+        const categoryContainer = document.createElement('div');
+        categoryContainer.classList.add('category-container');
+
+        const categoryTitle = document.createElement('h3');
+        categoryTitle.classList.add('category-title');
+        categoryTitle.setAttribute('id', `id${category.id}`);
+        const CategoryTitleText = document.createTextNode(category.name);
+
+        categoryTitle.appendChild(CategoryTitleText);
+        categoryContainer.appendChild(categoryTitle);
+        categoriesPreviewSeriesContainer.appendChild(categoryContainer);
+
+        console.log(category.id, category.name)
+    });
+}
+
 
 getTrendingSeriesPreview();
+getCategoriesPreview();
