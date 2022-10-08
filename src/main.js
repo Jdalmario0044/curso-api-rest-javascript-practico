@@ -47,6 +47,3 @@ async function getCategoriesPreview() {
         categoriesPreviewSeriesContainer.appendChild(categoryContainer);
     });
 }
-
-getTrendingSeriesPreview();
-getCategoriesPreview();
