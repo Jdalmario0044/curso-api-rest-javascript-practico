@@ -12,7 +12,6 @@ async function getTrendingSeriesPreview() {
     const series = data.results;
 
     series.forEach(serie => {
-        const trendingSeriesPreviewList = document.querySelector('#trendingPreview .trendingPreview-serieList');
         const serieContainer = document.createElement('div');
         serieContainer.classList.add('serie-container');
 
@@ -33,7 +32,6 @@ async function getCategoriesPreview() {
     const categories = data.genres;
     
     categories.forEach(category => {
-        const categoriesPreviewList = document.querySelector('#categoriesPreview .categoriesPreview-list');
         const categoryContainer = document.createElement('div');
         categoryContainer.classList.add('category-container');
 

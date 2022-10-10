@@ -43,8 +43,13 @@ function homePage() {
     genericSection.classList.add('inactive');
     serieDetailSection.classList.add('inactive');
 
-    getTrendingSeriesPreview();
-    getCategoriesPreview();
+    // getTrendingSeriesPreview();
+    // getCategoriesPreview();
+    const childrenCategoriesPreview = Array.from(categoriesPreviewList.children);
+    if(!childrenCategoriesPreview.length){
+        getTrendingSeriesPreview();
+        getCategoriesPreview();
+    }
 }
 function categoriesPage() {
     console.log('WE ARE IN CATEGORIES');
