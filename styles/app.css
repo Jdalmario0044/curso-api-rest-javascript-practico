@@ -275,7 +275,7 @@ button {
 
 
 /* Movie Detail */
-.movieDetail-container {
+.serieDetail-container {
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   padding: 32px 24px;
@@ -285,39 +285,39 @@ button {
   background-color: var(--purple-light-1);
 }
 
-.movieDetail-title {
+.serieDetail-title {
   display: inline-block;
   width: 80%;
   margin: 0 0 16px 0;
   padding: 0;
 }
 
-.movieDetail-score {
+.serieDetail-score {
   display: inline-block;
   text-align: right;
   width: 18%;
   font-weight: var(--font-weight-title2);
 }
-.movieDetail-score::before {
+.serieDetail-score::before {
   content: '★';
   color: var(--yellow);
   padding-right: 4px;
 }
 
-.movieDetail-description {
+.serieDetail-description {
   margin: 0 0 24px 0;
 }
 
-.relatedMovies-container {
+.relatedSerie-container {
   margin-top: 24px;
   height: 216px;
 }
 
-.relatedMovies-title {
+.relatedSerie-title {
   margin-bottom: 16px;
 }
 
-.relatedMovies-scrollContainer {
+.relatedSeries-scrollContainer {
   position: absolute;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -326,12 +326,12 @@ button {
   padding-bottom: 16px;
 }
 
-.relatedMovies-scrollContainer .serie-container {
+.relatedSeries-scrollContainer .serie-container {
   display: inline-block;
   margin-right: 8px;
 }
 
-.relatedMovies-scrollContainer .serie-img {
+.relatedSeries-scrollContainer .serie-img {
   width: 125px;
   min-width: 125px;
   max-width: 125px;

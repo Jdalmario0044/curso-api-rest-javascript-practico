@@ -12,7 +12,7 @@ async function getTrendingSeriesPreview() {
     const series = data.results;
 
     series.forEach(serie => {
-        const trendingPreviewSeriesContainer = document.querySelector('#trendingPreview .trendingPreview-serieList');
+        const trendingSeriesPreviewList = document.querySelector('#trendingPreview .trendingPreview-serieList');
         const serieContainer = document.createElement('div');
         serieContainer.classList.add('serie-container');
 
@@ -24,7 +24,7 @@ async function getTrendingSeriesPreview() {
             `https://image.tmdb.org/t/p/w300${serie.poster_path}`,
         ); 
         serieContainer.appendChild(serieImg); 
-        trendingPreviewSeriesContainer.appendChild(serieContainer);
+        trendingSeriesPreviewList.appendChild(serieContainer);
     });
     // console.log(series);
 }
@@ -33,7 +33,7 @@ async function getCategoriesPreview() {
     const categories = data.genres;
     
     categories.forEach(category => {
-        const categoriesPreviewSeriesContainer = document.querySelector('#categoriesPreview .categoriesPreview-list');
+        const categoriesPreviewList = document.querySelector('#categoriesPreview .categoriesPreview-list');
         const categoryContainer = document.createElement('div');
         categoryContainer.classList.add('category-container');
 
@@ -44,6 +44,6 @@ async function getCategoriesPreview() {
 
         categoryTitle.appendChild(CategoryTitleText);
         categoryContainer.appendChild(categoryTitle);
-        categoriesPreviewSeriesContainer.appendChild(categoryContainer);
+        categoriesPreviewList.appendChild(categoryContainer);
     });
 }
