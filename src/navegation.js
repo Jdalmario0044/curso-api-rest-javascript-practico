@@ -43,14 +43,14 @@ function homePage() {
     genericSection.classList.add('inactive');
     serieDetailSection.classList.add('inactive');
 
-    // getTrendingSeriesPreview();
-    // getCategoriesPreview();
     const childrenCategoriesPreview = Array.from(categoriesPreviewList.children);
     if(!childrenCategoriesPreview.length){
-        getTrendingSeriesPreview();
+        // getTrendingSeriesPreview();
+        getAndAppendSeries('trending/tv/day',trendingSeriesPreviewList);
         getCategoriesPreview();
     }
 }
+
 function categoriesPage() {
     console.log('WE ARE IN CATEGORIES');
 
@@ -67,13 +67,19 @@ function categoriesPage() {
     genericSection.classList.remove('inactive');
     serieDetailSection.classList.add('inactive');
 
+    window.scrollTo(0,0);
+
     const [,categoryData] = location.hash.split('=');
     const [categoryId,categoryName] = categoryData.split('-');
 
     const categoryName2 = decodeURI(categoryName);
     headerCategoryTitle.innerHTML= categoryName2;
     
-    getSeriesByCategory(categoryId);
+    getAndAppendSeries('discover/tv',genericSection,{
+        params: {
+            with_genres: categoryId,
+        }
+    });
 }
 function serieDetailsPage() {
     console.log('WE ARE IN SERIE DETAILS');
