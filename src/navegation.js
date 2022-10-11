@@ -66,6 +66,14 @@ function categoriesPage() {
     categoriesPreviewSection.classList.add('inactive');
     genericSection.classList.remove('inactive');
     serieDetailSection.classList.add('inactive');
+
+    const [,categoryData] = location.hash.split('=');
+    const [categoryId,categoryName] = categoryData.split('-');
+
+    const categoryName2 = decodeURI(categoryName);
+    headerCategoryTitle.innerHTML= categoryName2;
+    
+    getSeriesByCategory(categoryId);
 }
 function serieDetailsPage() {
     console.log('WE ARE IN SERIE DETAILS');
