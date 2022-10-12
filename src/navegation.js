@@ -1,5 +1,6 @@
-searchFormBtn.addEventListener('click', () => {
-    location.hash = `#search=${searhFormInput.value}`;
+searchFormBtn.addEventListener('click', e => {
+    // location.hash = `#search=${searhFormInput.value}`;
+    searchFormInput.value !== "" ? location.hash = `#search=${searchFormInput.value}`  : e.preventDefault();
 });
 trendingBtn.addEventListener('click', () => {
     location.hash = '#trends'
@@ -30,6 +31,7 @@ function navigator() {
 
 function homePage() {
     console.log('WE ARE IN HOME');
+    headerSection.style.background = '';
 
     headerSection.classList.remove('header-container--long');
     headerSection.style.backgound = '';
@@ -95,6 +97,9 @@ function serieDetailsPage() {
     categoriesPreviewSection.classList.add('inactive');
     genericSection.classList.add('inactive');
     serieDetailSection.classList.remove('inactive');
+
+    const [,serieId] = location.hash.split('=');
+    getSerieById(serieId);
 }
 function searchPage() {
     console.log('WE ARE IN SEARCH');

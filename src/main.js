@@ -5,6 +5,7 @@ const API = axios.create({
     },
     params: {
         'api_key': API_KEY,
+        'language': 'es-CO'
     },
 });
 
@@ -17,6 +18,9 @@ async function getAndAppendSeries(path, parentContainer, optionalConfig ={}) {
     series.forEach(serie => {
         const serieContainer = document.createElement('div');
         serieContainer.classList.add('serie-container');
+        serieContainer.addEventListener('click',()=>{
+            location.hash = `#serie=${serie.id}`;
+        });
 
         const serieImg = document.createElement('img');
         serieImg.classList.add('serie-img');
@@ -56,6 +60,26 @@ async function getCategoriesPreview() {
     const categories = data.genres;
 
     createCategories(categories,categoriesPreviewList);
+}
+
+async function getSerieById(id) {
+    const {data:serie} = await API(`tv/${id}`);
+    const serieDetailImg = `https://image.tmdb.org/t/p/w500${serie.poster_path}`;
+    headerSection.style.background = `
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.35) 19.27%,
+            rgba(0, 0, 0, 0) 29.17%
+        ),
+        url(${serieDetailImg})
+    `;
+
+    serieDetailTitle.textContent = serie.name;
+    serieDetailDescription.textContent = serie.overview;
+    serieDetailScore.textContent = serie.vote_average;
+
+    createCategories(serie.genres,serieDetailCategoriesList);
+    // console.log(serie.genres);
 }
 
 // async function getTrendingSeriesPreview() {

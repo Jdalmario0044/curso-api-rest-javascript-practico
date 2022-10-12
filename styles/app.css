@@ -16,6 +16,7 @@
   --lightBlue: #A2EEE5;
   --darkBlue: #8EA2EA;
   --red: #F09D9D;
+  --oragne: ##ff6600;
 
   --font-family-titles: 'Dosis', sans-serif;
   --font-family-text: 'Red Hat Display', sans-serif;
@@ -125,12 +126,15 @@ button {
 
 .header-container--long {
   background-image: url('https://pics.filmaffinity.com/Deadpool-777527803-large.jpg');
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 19.27%, rgba(0, 0, 0, 0) 29.17%), url(https://pics.filmaffinity.com/Deadpool-777527803-large.jpg);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 19.27%, rgba(0, 0, 0, 0) 29.17%), url();
   background-size: cover !important;
   height: 480px;
   position: fixed;
   top: 0;
   width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .header-container--categoryView {
@@ -253,6 +257,8 @@ button {
 #id53 { --idColor: var(--green); }/* name: Thriller*/
 #id10752 { --idColor: var(--lightBlue); }/* name: War*/
 #id37 { --idColor: var(--darkBlue); }/* name: Western*/
+#id10759 { --idColor: var(--oragne); }/* name: Action & Adventure*/
+
 
 
 /* Generic List (search, trending & category) */
