@@ -8,6 +8,7 @@ const API = axios.create({
     },
 });
 
+// Helpers
 async function getAndAppendSeries(path, parentContainer, optionalConfig ={}) {
     const {data} = await API(path,optionalConfig);
     const series = data.results;
@@ -29,10 +30,9 @@ async function getAndAppendSeries(path, parentContainer, optionalConfig ={}) {
     })
 }
 
-async function getCategoriesPreview() {
-    const {data} = await  API('genre/movie/list');
-    const categories = data.genres;
-    
+function createCategories(categories,container) {
+    container.innerHTML = '';
+
     categories.forEach(category => {
         const categoryContainer = document.createElement('div');
         categoryContainer.classList.add('category-container');
@@ -46,8 +46,16 @@ async function getCategoriesPreview() {
     
         categoryTitle.appendChild(CategoryTitleText);
         categoryContainer.appendChild(categoryTitle);
-        categoriesPreviewList.appendChild(categoryContainer);
+        container.appendChild(categoryContainer);
     });
+}
+// Llamados a la API
+
+async function getCategoriesPreview() {
+    const {data} = await  API('genre/movie/list');
+    const categories = data.genres;
+
+    createCategories(categories,categoriesPreviewList);
 }
 
 // async function getTrendingSeriesPreview() {
