@@ -53,8 +53,8 @@ function createCategories(categories,container) {
         container.appendChild(categoryContainer);
     });
 }
-// Llamados a la API
 
+// Llamados a la API
 async function getCategoriesPreview() {
     const {data} = await  API('genre/movie/list');
     const categories = data.genres;
@@ -79,53 +79,12 @@ async function getSerieById(id) {
     serieDetailScore.textContent = serie.vote_average;
 
     createCategories(serie.genres,serieDetailCategoriesList);
-    // console.log(serie.genres);
+
+    // getRelatedSeriesById(id);
+    getAndAppendSeries(`tv/${id}/recommendations`,relatedSeriesContainer);
 }
 
-// async function getTrendingSeriesPreview() {
-//     const {data} = await  API('trending/tv/day');
-//     const series = data.results;
-
-//     series.forEach(serie => {
-//         const serieContainer = document.createElement('div');
-//         serieContainer.classList.add('serie-container');
-
-//         const serieImg = document.createElement('img');
-//         serieImg.classList.add('serie-img');
-//         serieImg.setAttribute('alt', serie.title);
-//         serieImg.setAttribute(
-//             'src',
-//             `https://image.tmdb.org/t/p/w300${serie.poster_path}`,
-//         ); 
-//         serieContainer.appendChild(serieImg); 
-//         trendingSeriesPreviewList.appendChild(serieContainer);
-//     });
-//     // console.log(series);
-// }
-
-// async function getSeriesByCategory(id) {
-//     const {data} = await  API('discover/tv',{
-//         params: {
-//             with_genres: id,
-//         }
-//     });
-//     const series = data.results;
-    
-//     genericSection.innerHTML= '';
-//     series.forEach(serie => {
-//         const serieContainer = document.createElement('div');
-//         serieContainer.classList.add('serie-container');
-        
-//         const serieImg = document.createElement('img');
-//         serieImg.classList.add('serie-img');
-//         serieImg.setAttribute('alt', serie.title);
-//         serieImg.setAttribute(
-//             'src',
-//             `https://image.tmdb.org/t/p/w300${serie.poster_path}`,
-//             ); 
-//             serieContainer.appendChild(serieImg); 
-//             genericSection.appendChild(serieContainer);
-//         });
-//         // console.log(data.results);
-//     }
-
+async function getRelatedSeriesById(id) {
+    const {data} = await API(`tv/${id}/recommendations`);
+    const relatedSeries = data.results;
+}

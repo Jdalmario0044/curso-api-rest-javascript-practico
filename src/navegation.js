@@ -1,13 +1,14 @@
 searchFormBtn.addEventListener('click', e => {
-    // location.hash = `#search=${searhFormInput.value}`;
     searchFormInput.value !== "" ? location.hash = `#search=${searchFormInput.value}`  : e.preventDefault();
 });
 trendingBtn.addEventListener('click', () => {
     location.hash = '#trends'
 });
 arrowBtn.addEventListener('click', () => {
-    // location.hash = '#home'
     history.back();
+});
+headerTitle.addEventListener('click', ()=> {
+    location.hash = '#home'
 });
 window.addEventListener('DOMContentLoaded',navigator, false);
 window.addEventListener('hashchange',navigator, false);
@@ -30,11 +31,10 @@ function navigator() {
 }
 
 function homePage() {
-    console.log('WE ARE IN HOME');
+    // console.log('WE ARE IN HOME');
     headerSection.style.background = '';
 
     headerSection.classList.remove('header-container--long');
-    headerSection.style.backgound = '';
     arrowBtn.classList.add('inactive');
     arrowBtn.classList.remove('header-arrow--white');
     headerTitle.classList.remove('inactive');
@@ -48,17 +48,16 @@ function homePage() {
 
     const childrenCategoriesPreview = Array.from(categoriesPreviewList.children);
     if(!childrenCategoriesPreview.length){
-        // getTrendingSeriesPreview();
         getAndAppendSeries('trending/tv/day',trendingSeriesPreviewList);
         getCategoriesPreview();
     }
 }
 
 function categoriesPage() {
-    console.log('WE ARE IN CATEGORIES');
-
+    // console.log('WE ARE IN CATEGORIES');
+    headerSection.style.background = '';
+    
     headerSection.classList.remove('header-container--long');
-    headerSection.style.backgound = '';
     arrowBtn.classList.remove('inactive');
     arrowBtn.classList.remove('header-arrow--white');
     headerTitle.classList.add('inactive');
@@ -83,10 +82,9 @@ function categoriesPage() {
     });
 }
 function serieDetailsPage() {
-    console.log('WE ARE IN SERIE DETAILS');
+    // console.log('WE ARE IN SERIE DETAILS');
 
     headerSection.classList.add('header-container--long');
-    // headerSection.style.backgound = '';
     arrowBtn.classList.remove('inactive');
     arrowBtn.classList.add('header-arrow--white');
     headerTitle.classList.add('inactive');
@@ -102,8 +100,9 @@ function serieDetailsPage() {
     getSerieById(serieId);
 }
 function searchPage() {
-    console.log('WE ARE IN SEARCH');
-
+    // console.log('WE ARE IN SEARCH');
+    headerSection.style.background = '';
+ 
     headerSection.classList.remove('header-container--long');
     headerSection.style.backgound = '';
     arrowBtn.classList.remove('inactive');
@@ -125,10 +124,10 @@ function searchPage() {
     });
 }
 function trendsPage() {
-    console.log('WE ARE IN TRENDS');
+    // console.log('WE ARE IN TRENDS');
+    headerSection.style.background = '';
 
     headerSection.classList.remove('header-container--long');
-    headerSection.style.backgound = '';
     arrowBtn.classList.remove('inactive');
     arrowBtn.classList.remove('header-arrow--white');
     headerTitle.classList.add('inactive');
