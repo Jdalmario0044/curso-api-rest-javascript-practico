@@ -367,19 +367,18 @@ button {
   min-height: 187.5px;
   max-height: 187.5px;
 }
-  
 
 /* Footer */
 footer {
   background-color: var(--purple-medium-3);
   color: var(--purple-light-2);
   text-align: center;
-  height: 48px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 35px;
 }
-
 
 /* Navigation */
 .inactive {
