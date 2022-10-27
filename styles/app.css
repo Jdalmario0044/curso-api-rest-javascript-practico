@@ -11,12 +11,22 @@
   --purple-dark-2: #2A0646;
 
   --yellow: #EECC75;
+  --yellowC: #fffb13a2;
+  --burgundyC: #a82020;
+  --darkC: #0f0f0fc7;
+  --darkC-2: #290921d7;
+  --greyC: #add8e6;
+  --greyC-2: #646464;
+  --greenC: #61af4d;
+  --greenC-2: #3c9e24;
+  --redC: #f12222e1;
+  --blueC: #2230f1c4;
   --green: #CAD297;
   --aqua: #B7EAC5;
   --lightBlue: #A2EEE5;
   --darkBlue: #8EA2EA;
   --red: #F09D9D;
-  --oragne: ##ff6600;
+  --oragne: #ff6600;
 
   --font-family-titles: 'Dosis', sans-serif;
   --font-family-text: 'Red Hat Display', sans-serif;
@@ -238,28 +248,33 @@ button {
   width: 8px;
   height: 8px;
 }
-#id28 { --idColor: var(--yellow); }/* name: Action*/
-#id12 { --idColor: var(--red); }/* name: Adventure*/
+/* #id28 { --idColor: var(--yellow); }name: Action */
+/* #id12 { --idColor: var(--red); }name: Adventure */
+#id10759 { --idColor: var(--burgundyC); }/* name: Action and adventure*/
 #id16 { --idColor: var(--green); }/* name: Animation*/
-#id35 { --idColor: var(--lightBlue); }/* name: Comedy*/
-#id80 { --idColor: var(--darkBlue); }/* name: Crime*/
+#id35 { --idColor: var(--yellowC); }/* name: Comedy*/
+#id80 { --idColor: var(--darkC-2); }/* name: Crime*/
 #id99 { --idColor: var(--purple-dark-1); }/* name: Documentary*/
 #id18 { --idColor: var(--purple-medium-1); }/* name: Drama*/
+#id10762 { --idColor: var(--blueC); }/* name: Kids*/
+#id10763 { --idColor: var(--greyC-2); }/* name: News*/
+#id10765 { --idColor: var(--oragne); }/* name: Sci-Fi and Fantasy*/
+#id10767 { --idColor: var(--greenC-2); }/* name: Sci-Fi and Talk*/
 #id10751 { --idColor: var(--yellow); }/* name: Family*/
 #id14 { --idColor: var(--red); }/* name: Fantasy*/
 #id36 { --idColor: var(--green); }/* name: History*/
 #id27 { --idColor: var(--lightBlue); }/* name: Horror*/
 #id10402 { --idColor: var(--darkBlue); }/* name: Music*/
-#id9648 { --idColor: var(--purple-dark-1); }/* name: Mystery*/
+#id9648 { --idColor: var(--darkC); }/* name: Mystery*/
+#id10764 { --idColor: var(--greyC); }/* name: Reality*/
+#id10766 { --idColor: var(--greenC); }/* name: Soap*/
+#id10768 { --idColor: var(--redC); }/* name: War and politics*/
 #id10749 { --idColor: var(--purple-medium-1); }/* name: Romance*/
-#id878 { --idColor: var(--yellow); }/* name: Science Fiction*/
-#id10770 { --idColor: var(--red); }/* name: TV Movie*/
+#id878 { --idColor: var(--yellow); }/* name: Science Fiction */
+#id10770 { --idColor: var(--red); }/* name: TV Movie */
 #id53 { --idColor: var(--green); }/* name: Thriller*/
 #id10752 { --idColor: var(--lightBlue); }/* name: War*/
 #id37 { --idColor: var(--darkBlue); }/* name: Western*/
-#id10759 { --idColor: var(--oragne); }/* name: Action & Adventure*/
-
-
 
 /* Generic List (search, trending & category) */
 .genericList-container {

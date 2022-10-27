@@ -56,7 +56,7 @@ function createCategories(categories,container) {
 
 // Llamados a la API
 async function getCategoriesPreview() {
-    const {data} = await  API('genre/movie/list');
+    const {data} = await  API('genre/tv/list');
     const categories = data.genres;
 
     createCategories(categories,categoriesPreviewList);
