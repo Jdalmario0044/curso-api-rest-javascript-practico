@@ -9,6 +9,9 @@
   --purple-medium-3: #5C218A;
   --purple-dark-1: #3E0F64;
   --purple-dark-2: #2A0646;
+  --darktheme-g: #262626;
+  --darktheme-s: #333333;
+  --text-color: #d4d4d4;
 
   --yellow: #EECC75;
   --yellowC: #fffb13a2;
@@ -37,12 +40,12 @@
 }
 
 html {
-  background-color: var(--purple-medium-3);
+  background-color: var(--darktheme-g);
 }
 
 body {
-  background-color: var(--purple-light-1);
-  color: var(--purple-dark-2);
+  background-color: var(--darktheme-g);
+  color: var(--text-color);
   font-family: var(--font-family-text);
   font-weight: var(--font-weight-text1);
   font-size: 16px;
@@ -57,7 +60,7 @@ h1, h2, h3 {
 
 h1, h2 {
   font-size: 24px;
-  color: var(--purple-dark-2);
+  color: var(--text-color);
   font-family: var(--font-family-titles);
   font-weight: var(--font-weight-title1);
   margin: 0;
@@ -66,12 +69,12 @@ h1, h2 {
 
 h2 {
   font-size: 18px;
-  color: var(--purple-dark-1);
+  color: var(--text-color);
   font-weight: var(--font-weight-title2);
 }
 
 h3 {
-  color: var(--purple-dark-2);
+  color: var(--text-color);
   font-weight: var(--font-weight-text2);
   font-size: 16px;
 }
@@ -104,6 +107,9 @@ button {
   padding: 0 24px;
 }
 
+/* .trendingPreview-container {
+  background-color: var(--darktheme-s);
+} */
 .trendingPreview-container, .categoriesPreview-container, footer {
   margin-top: 48px;
 }
@@ -304,7 +310,7 @@ button {
   margin-top: 403px;
   z-index: 1;
   position: absolute;
-  background-color: var(--purple-light-1);
+  background-color: var(--darktheme-g);
 }
 
 .serieDetail-title {
