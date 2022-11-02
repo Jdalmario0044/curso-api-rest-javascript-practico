@@ -10,29 +10,67 @@ const API = axios.create({
 });
 
 // Helpers
-async function getAndAppendSeries(path, parentContainer, optionalConfig ={}) {
-    const {data} = await API(path,optionalConfig);
-    const series = data.results;
 
-    parentContainer.innerHTML = '';
+const lazyLoader = new IntersectionObserver((entries) => {
+    entries.forEach((entry)=>{
+      // console.log(entry.target.setAttribute);
+      if (entry.isIntersecting) {
+        const url = entry.target.getAttribute('data-img');
+        entry.target.setAttribute('src', url);
+      }
+    });
+  });
+
+function createSeries(series, container, lazyLoad = false) {
+    container.innerHTML = '';
+  
     series.forEach(serie => {
-        const serieContainer = document.createElement('div');
-        serieContainer.classList.add('serie-container');
-        serieContainer.addEventListener('click',()=>{
-            location.hash = `#serie=${serie.id}`;
-        });
+      const serieContainer = document.createElement('div');
+      serieContainer.classList.add('serie-container');
+      serieContainer.addEventListener('click', () => {
+        location.hash = '#serie=' + serie.id;
+      });
+  
+      const serieImg = document.createElement('img');
+      serieImg.classList.add('serie-img');
+      serieImg.setAttribute('alt', serie.title);
+      serieImg.setAttribute(
+        lazyLoad ? 'data-img' : 'src',
+        'https://image.tmdb.org/t/p/w300' + serie.poster_path,
+      );
+  
+        if (lazyLoad) {
+        lazyLoader.observe(serieImg);
+      }
+  
+      serieContainer.appendChild(serieImg);
+      container.appendChild(serieContainer);
+    });
+  }
 
-        const serieImg = document.createElement('img');
-        serieImg.classList.add('serie-img');
-        serieImg.setAttribute('alt', serie.title);
-        serieImg.setAttribute(
-            'src',
-            `https://image.tmdb.org/t/p/w300${serie.poster_path}`,
-        );
-        serieContainer.appendChild(serieImg); 
-        parentContainer.appendChild(serieContainer);
-    })
-}
+// async function getAndAppendSeries(path, parentContainer, optionalConfig ={}) {
+//     const {data} = await API(path,optionalConfig);
+//     const series = data.results;
+
+//     parentContainer.innerHTML = '';
+//     series.forEach(serie => {
+//         const serieContainer = document.createElement('div');
+//         serieContainer.classList.add('serie-container');
+//         serieContainer.addEventListener('click',()=>{
+//             location.hash = `#serie=${serie.id}`;
+//         });
+
+//         const serieImg = document.createElement('img');
+//         serieImg.classList.add('serie-img');
+//         serieImg.setAttribute('alt', serie.title);
+//         serieImg.setAttribute(
+//             'src',
+//             `https://image.tmdb.org/t/p/w300${serie.poster_path}`,
+//         );
+//         serieContainer.appendChild(serieImg); 
+//         parentContainer.appendChild(serieContainer);
+//     })
+// }
 
 function createCategories(categories,container) {
     container.innerHTML = '';
@@ -55,11 +93,49 @@ function createCategories(categories,container) {
 }
 
 // Llamados a la API
+
+async function getTrendingSeriesPreview() {
+    const { data } = await API('trending/tv/day');
+    const series = data.results;
+    // console.log(movies)
+  
+    createSeries(series, trendingSeriesPreviewList, true);
+  }
+
 async function getCategoriesPreview() {
     const {data} = await  API('genre/tv/list');
     const categories = data.genres;
 
     createCategories(categories,categoriesPreviewList);
+}
+
+async function getSeriesByCategory(id) {
+    const { data } = await API('discover/tv', {
+      params: {
+        with_genres: id,
+      },
+    });
+    const series = data.results;
+  
+    createSeries(series, genericSection);
+  }
+
+  async function getSeriesBySearch(query) {
+    const { data } = await API('search/tv', {
+      params: {
+        query,
+      },
+    });
+    const series = data.results;
+  
+    createSeries(series, genericSection);
+}
+
+async function getTrendingSeries() {
+    const { data } = await API('trending/movie/day');
+    const series = data.results;
+  
+    createSeries(series, genericSection);
 }
 
 async function getSerieById(id) {
@@ -78,13 +154,15 @@ async function getSerieById(id) {
     serieDetailDescription.textContent = serie.overview;
     serieDetailScore.textContent = serie.vote_average;
 
-    createCategories(serie.genres,serieDetailCategoriesList);
+    createCategories(serie.genres, serieDetailCategoriesList);
 
-    // getRelatedSeriesById(id);
-    getAndAppendSeries(`tv/${id}/recommendations`,relatedSeriesContainer);
+    getRelatedSeriesById(id);
 }
 
 async function getRelatedSeriesById(id) {
     const {data} = await API(`tv/${id}/recommendations`);
     const relatedSeries = data.results;
+    console.log(data);
+
+  createSeries(relatedSeries, relatedSeriesContainer);
 }

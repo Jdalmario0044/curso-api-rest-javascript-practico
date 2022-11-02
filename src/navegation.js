@@ -32,9 +32,9 @@ function navigator() {
 
 function homePage() {
     // console.log('WE ARE IN HOME');
-    headerSection.style.background = '';
-
+    
     headerSection.classList.remove('header-container--long');
+    headerSection.style.background = '';
     arrowBtn.classList.add('inactive');
     arrowBtn.classList.remove('header-arrow--white');
     headerTitle.classList.remove('inactive');
@@ -46,11 +46,8 @@ function homePage() {
     genericSection.classList.add('inactive');
     serieDetailSection.classList.add('inactive');
 
-    const childrenCategoriesPreview = Array.from(categoriesPreviewList.children);
-    if(!childrenCategoriesPreview.length){
-        getAndAppendSeries('trending/tv/day',trendingSeriesPreviewList);
-        getCategoriesPreview();
-    }
+    getTrendingSeriesPreview();
+    getCategoriesPreview();
 }
 
 function categoriesPage() {
@@ -74,12 +71,8 @@ function categoriesPage() {
 
     const categoryName2 = decodeURI(categoryName);
     headerCategoryTitle.innerHTML= categoryName2;
-    
-    getAndAppendSeries('discover/tv',genericSection,{
-        params: {
-            with_genres: categoryId,
-        }
-    });
+
+    getSeriesByCategory(categoryId);
 }
 function serieDetailsPage() {
     // console.log('WE ARE IN SERIE DETAILS');
@@ -117,17 +110,14 @@ function searchPage() {
     serieDetailSection.classList.add('inactive');
 
     const [,query] = location.hash.split('=');
-    getAndAppendSeries('search/tv',genericSection,{
-        params: {
-            query,
-        }
-    });
+
+    getSeriesBySearch(query);
 }
 function trendsPage() {
     // console.log('WE ARE IN TRENDS');
-    headerSection.style.background = '';
-
+    
     headerSection.classList.remove('header-container--long');
+    headerSection.style.background = '';
     arrowBtn.classList.remove('inactive');
     arrowBtn.classList.remove('header-arrow--white');
     headerTitle.classList.add('inactive');
@@ -140,5 +130,7 @@ function trendsPage() {
     serieDetailSection.classList.add('inactive');
 
     headerCategoryTitle.innerHTML= 'Tendencias';
-    getAndAppendSeries('trending/tv/day',genericSection);
+
+    getTrendingSeries();
+    // getAndAppendSeries('trending/tv/day',genericSection);
 }
