@@ -152,7 +152,7 @@ async function getSerieById(id) {
 
     serieDetailTitle.textContent = serie.name;
     serieDetailDescription.textContent = serie.overview;
-    serieDetailScore.textContent = serie.vote_average;
+    serieDetailScore.textContent = serie.vote_average.toFixed(1);
 
     createCategories(serie.genres, serieDetailCategoriesList);
 
@@ -162,7 +162,7 @@ async function getSerieById(id) {
 async function getRelatedSeriesById(id) {
     const {data} = await API(`tv/${id}/recommendations`);
     const relatedSeries = data.results;
-    console.log(data);
+    console.log(id);
 
   createSeries(relatedSeries, relatedSeriesContainer);
 }
