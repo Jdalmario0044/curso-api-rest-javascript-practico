@@ -46,7 +46,7 @@ function createSeries(series, container, lazyLoad = false) {
       serieContainer.appendChild(serieImg);
       container.appendChild(serieContainer);
     });
-  }
+}
 
 // async function getAndAppendSeries(path, parentContainer, optionalConfig ={}) {
 //     const {data} = await API(path,optionalConfig);
@@ -100,7 +100,7 @@ async function getTrendingSeriesPreview() {
     // console.log(movies)
   
     createSeries(series, trendingSeriesPreviewList, true);
-  }
+}
 
 async function getCategoriesPreview() {
     const {data} = await  API('genre/tv/list');
@@ -149,9 +149,11 @@ async function getSerieById(id) {
         ),
         url(${serieDetailImg})
     `;
-
+    serieDetailTitle.classList.remove('serieDetail-title--loading');
     serieDetailTitle.textContent = serie.name;
+    serieDetailDescription.classList.remove('serieDetail-description--loading');
     serieDetailDescription.textContent = serie.overview;
+    serieDetailScore.classList.remove('serieDetail-score--loading');
     serieDetailScore.textContent = serie.vote_average.toFixed(1);
 
     createCategories(serie.genres, serieDetailCategoriesList);
@@ -164,5 +166,5 @@ async function getRelatedSeriesById(id) {
     const relatedSeries = data.results;
     console.log(id);
 
-  createSeries(relatedSeries, relatedSeriesContainer);
+  createSeries(relatedSeries, relatedSeriesContainer, true);
 }

@@ -122,6 +122,25 @@ button {
   cursor: pointer;
 }
 
+.serie-container--loading {
+  background: var(--darktheme-s);
+  border-radius: 8px;
+  height: 225px;
+  min-height: 225px;
+  max-height: 225px;
+  width: 100%;
+  min-width: 150px;
+  max-width: 190px;
+  margin-bottom: 15px;
+  animation: loading-skeleton infinite 1.5s;
+}
+.serie-container--loading:nth-child(2){
+  animation-delay: .2s;
+}
+.serie-container--loading:nth-child(3){
+  animation-delay: .4s;
+}
+
 .serie-img {
   border-radius: 8px;
 }
@@ -134,6 +153,24 @@ button {
   flex-wrap: wrap;
 }
 
+.category-container--loading {
+  background: var(--darktheme-s);
+  border-radius: 8px;
+  height: 25px;
+  min-height: 25px;
+  max-height: 25px;
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+  margin-bottom: 15px;
+  animation: loading-skeleton infinite 1.5s;
+}
+.category-container--loading:nth-child(2) {
+  animation-delay: .2s;
+}
+.category-container--loading:nth-child(3) {
+  animation-delay: .4s;
+}
 
 /* Header */
 .header-container {
@@ -141,7 +178,7 @@ button {
 }
 
 .header-container--long {
-  background-image: url('https://pics.filmaffinity.com/Deadpool-777527803-large.jpg');
+  background-image: url('../assets/images/loadingImage.png');
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 19.27%, rgba(0, 0, 0, 0) 29.17%), url();
   background-size: cover !important;
   height: 480px;
@@ -319,6 +356,18 @@ button {
   margin: 0 0 16px 0;
   padding: 0;
 }
+.serieDetail-title--loading {
+  background: var(--darktheme-s);
+  border-radius: 8px;
+  height: 30px;
+  min-height: 30px;
+  max-height: 30px;
+  width: 80%;
+  min-width: 150px;
+  max-width: 320px;
+  margin-bottom: 15px;
+  animation: loading-skeleton infinite 1.5s;
+}
 
 .serieDetail-score {
   display: inline-block;
@@ -331,9 +380,34 @@ button {
   color: var(--yellow);
   padding-right: 4px;
 }
+.serieDetail-score--loading {
+  background: var(--darktheme-s);
+  border-radius: 8px;
+  height: 22px;
+  min-height: 22px;
+  /* max-height: 25px; */
+  width: 18%;
+  min-width: 73px;
+  max-width: 73px;
+  margin-bottom: 15px;
+  animation: loading-skeleton infinite 1.5s;
+}
 
 .serieDetail-description {
   margin: 0 0 24px 0;
+}
+
+.serieDetail-description--loading {
+  background: var(--darktheme-s);
+  border-radius: 8px;
+  height: 85px;
+  min-height: 85px;
+  max-height: 140px;
+  width: 350px;
+  min-width: 350px;
+  max-width: 400px;
+  margin-bottom: 15px;
+  animation: loading-skeleton infinite 1.5s;
 }
 
 .relatedSerie-container {
@@ -351,6 +425,7 @@ button {
   overflow-y: hidden;
   white-space: nowrap;
   width: calc(100vw - 24px);
+  max-height: 200px;
   padding-bottom: 16px;
 }
 
@@ -383,4 +458,14 @@ footer {
 /* Navigation */
 .inactive {
   display: none;
+}
+
+/* Animation */
+@keyframes loading-skeleton {
+  0%, 100%{
+    opacity: 100%;
+  }
+  50% {
+    opacity: 0%;
+  }
 }
