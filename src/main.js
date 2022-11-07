@@ -38,6 +38,12 @@ function createSeries(series, container, lazyLoad = false) {
         lazyLoad ? 'data-img' : 'src',
         'https://image.tmdb.org/t/p/w300' + serie.poster_path,
       );
+      serieImg.addEventListener('error', () => {
+        serieImg.setAttribute(
+          'src',
+          'https://i.imgur.com/DTvoIh6.png',
+        );
+      })
   
         if (lazyLoad) {
         lazyLoader.observe(serieImg);
@@ -117,7 +123,7 @@ async function getSeriesByCategory(id) {
     });
     const series = data.results;
   
-    createSeries(series, genericSection);
+    createSeries(series, genericSection, true);
   }
 
   async function getSeriesBySearch(query) {
@@ -128,14 +134,14 @@ async function getSeriesByCategory(id) {
     });
     const series = data.results;
   
-    createSeries(series, genericSection);
+    createSeries(series, genericSection, true);
 }
 
 async function getTrendingSeries() {
     const { data } = await API('trending/movie/day');
     const series = data.results;
   
-    createSeries(series, genericSection);
+    createSeries(series, genericSection, true);
 }
 
 async function getSerieById(id) {
