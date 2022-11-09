@@ -103,23 +103,32 @@ button {
 
 
 /* Shared */
-.header-container, .trendingPreview-header, .categoriesPreview-container {
+.header-container,
+.trendingPreview-header,
+.categoriesPreview-container,
+.liked-header {
   padding: 0 24px;
 }
 
 /* .trendingPreview-container {
   background-color: var(--darktheme-s);
 } */
-.trendingPreview-container, .categoriesPreview-container, footer {
+.trendingPreview-container,
+.categoriesPreview-container,
+.liked-container,
+footer {
   margin-top: 48px;
 }
 
-.trendingPreview-header, .categoriesPreview-title {
+.trendingPreview-header,
+.categoriesPreview-title,
+.liked-header {
   margin-bottom: 24px;
 }
 
 .serie-container {
   cursor: pointer;
+  position: relative;
 }
 
 .serie-container--loading {
@@ -144,6 +153,27 @@ button {
 .serie-img {
   border-radius: 8px;
   min-height: 175px;
+}
+
+.serie-btn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  margin: 0;
+  padding: 0;
+}
+.serie-btn::before {
+  content: '🤍';
+}
+.serie-btn--liked {
+  background-color: var(--purple-light-2);
+  box-shadow: 0px 0px 10px 2px var(--purple-dark-1);
+}
+.serie-btn--liked::before {
+  content: '💜';
 }
 
 .categoriesPreview-list, .categories-list {
@@ -233,7 +263,8 @@ button {
 
 
 /* Trending */
-.trendingPreview-header {
+.trendingPreview-header,
+.liked-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -245,7 +276,8 @@ button {
   width: 72px;
 }
 
-.trendingPreview-serieList {
+.trendingPreview-serieList,
+.liked-serieList {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
@@ -254,12 +286,14 @@ button {
   padding-bottom: 16px;
 }
 
-.trendingPreview-serieList .serie-container {
+.trendingPreview-serieList .serie-container,
+.liked-serieList .serie-container {
   display: inline-block;
   margin-right: 8px;
 }
 
-.trendingPreview-serieList .serie-container .serie-img {
+.trendingPreview-serieList .serie-container .serie-img,
+.liked-serieList .serie-container .serie-img {
   height: 225px;
   min-height: 225px;
   max-height: 225px;

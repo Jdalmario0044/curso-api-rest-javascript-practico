@@ -34,9 +34,6 @@ function createSeries(
   series.forEach((serie) => {
     const serieContainer = document.createElement("div");
     serieContainer.classList.add("serie-container");
-    serieContainer.addEventListener("click", () => {
-      location.hash = "#serie=" + serie.id;
-    });
 
     const serieImg = document.createElement("img");
     serieImg.classList.add("serie-img");
@@ -45,8 +42,18 @@ function createSeries(
       lazyLoad ? "data-img" : "src",
       "https://image.tmdb.org/t/p/w300" + serie.poster_path
     );
+    serieImg.addEventListener('click', () => {
+      location.hash = '#serie=' + serie.id;
+    });
     serieImg.addEventListener("error", () => {
       serieImg.setAttribute("src", "https://i.imgur.com/DTvoIh6.png");
+    });
+
+    const serieBtn = document.createElement('button');
+    serieBtn.classList.add('serie-btn');
+    serieBtn.addEventListener('click', () => {
+      serieBtn.classList.toggle('serie-btn--liked');
+      // Agregar peliculas a LS
     });
 
     if (lazyLoad) {
@@ -54,6 +61,7 @@ function createSeries(
     }
 
     serieContainer.appendChild(serieImg);
+    serieContainer.appendChild(serieBtn);
     container.appendChild(serieContainer);
   });
 }
