@@ -1,3 +1,6 @@
+let maxPage;
+let page = 1;
+let infiniteScroll;
 searchFormBtn.addEventListener('click', e => {
     searchFormInput.value !== "" ? location.hash = `#search=${searchFormInput.value}`  : e.preventDefault();
 });
@@ -12,8 +15,14 @@ headerTitle.addEventListener('click', ()=> {
 });
 window.addEventListener('DOMContentLoaded',navigator, false);
 window.addEventListener('hashchange',navigator, false);
+window.addEventListener('scroll', infiniteScroll, {passive: false});
 
 function navigator() {
+    if (infiniteScroll) {
+        window.removeEventListener('scroll', infiniteScroll, {passive: false});
+        infiniteScroll = undefined;
+    }
+    
     if (location.hash.startsWith('#trends')) {
         trendsPage();
     } else if(location.hash.startsWith('#search=')) {
@@ -28,6 +37,10 @@ function navigator() {
     
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
+
+    if (infiniteScroll) {
+        window.addEventListener('scroll', infiniteScroll, {passive: false});
+    }
 }
 
 function homePage() {
@@ -68,11 +81,20 @@ function categoriesPage() {
 
     const [,categoryData] = location.hash.split('=');
     const [categoryId,categoryName] = categoryData.split('-');
+    const nameData1 = categoryData.split('-');
 
-    const categoryName2 = decodeURI(categoryName);
-    headerCategoryTitle.innerHTML= categoryName2;
+    if (nameData1.length > 2) {
+        const nameData2 = categoryData.split('-')[2].replaceAll('%20', ' ');
+        const categoryName2 = (`${nameData1[1]}-${nameData2}`);
+
+        headerCategoryTitle.innerHTML= categoryName2;
+    } else {
+        headerCategoryTitle.innerHTML= categoryName.replaceAll('%20',' ');
+    }
 
     getSeriesByCategory(categoryId);
+
+    infiniteScroll = getPaginatedSeriesBycategory(categoryId);
 }
 function serieDetailsPage() {
     // console.log('WE ARE IN SERIE DETAILS');
@@ -112,7 +134,10 @@ function searchPage() {
     const [,query] = location.hash.split('=');
 
     getSeriesBySearch(query);
+
+    infiniteScroll = getPaginatedSeriesBySearch(query);
 }
+
 function trendsPage() {
     // console.log('WE ARE IN TRENDS');
     
@@ -132,5 +157,5 @@ function trendsPage() {
     headerCategoryTitle.innerHTML= 'Tendencias';
 
     getTrendingSeries();
-    // getAndAppendSeries('trending/tv/day',genericSection);
+    infiniteScroll = getPaginatedTrendingSeries;
 }
