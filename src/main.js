@@ -1,3 +1,5 @@
+// Data
+
 const API = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
   header: {
@@ -8,6 +10,32 @@ const API = axios.create({
     language: "es-CO",
   },
 });
+
+function likedSeriesList() {
+  const item = JSON.parse(localStorage.getItem("liked_series"));
+  let series;
+  if (item) {
+    series = item;
+  } else {
+    series = {};
+  }
+
+  return series;
+}
+
+function likeSerie(serie) {
+  const likedSeries = likedSeriesList();
+
+  // console.log(likedMovies);
+
+  if (likedSeries[serie.id]) {
+    likedSeries[serie.id] = undefined;
+  } else {
+    likedSeries[serie.id] = serie;
+  }
+
+  localStorage.setItem('liked_series', JSON.stringify(likedSeries));
+}
 
 // Helpers
 
@@ -51,9 +79,11 @@ function createSeries(
 
     const serieBtn = document.createElement('button');
     serieBtn.classList.add('serie-btn');
+    likedSeriesList()[serie.id] && serieBtn.classList.add('serie-btn--liked');
     serieBtn.addEventListener('click', () => {
       serieBtn.classList.toggle('serie-btn--liked');
-      // Agregar peliculas a LS
+      likeSerie(serie);
+      getLikedSeries();
     });
 
     if (lazyLoad) {
@@ -254,4 +284,13 @@ async function getRelatedSeriesById(id) {
   // console.log(id);
 
   createSeries(relatedSeries, relatedSeriesContainer, { lazyLoad: true, clean: true });
+}
+
+function getLikedSeries() {
+  const likedSeries = likedSeriesList();
+  const seriesArray = Object.values(likedSeries);
+
+  createSeries(seriesArray, likedSeriesListArticle, {lazyLoad: true, clean: true});
+
+  console.log(seriesArray);
 }

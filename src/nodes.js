@@ -4,6 +4,7 @@ const trendingPreviewSection = document.querySelector('#trendingPreview');
 const categoriesPreviewSection = document.querySelector('#categoriesPreview');
 const genericSection = document.querySelector('#genericList');
 const serieDetailSection = document.querySelector('#serieDetail');
+const likedSeriesSection = document.querySelector('#liked');
 
 //List & Containers
 const searchForm = document.querySelector('#searchForm');
@@ -11,6 +12,7 @@ const trendingSeriesPreviewList = document.querySelector('.trendingPreview-serie
 const categoriesPreviewList = document.querySelector('.categoriesPreview-list');
 const serieDetailCategoriesList = document.querySelector('#serieDetail .categories-list');
 const relatedSeriesContainer = document.querySelector('.relatedSeries-scrollContainer');
+const likedSeriesListArticle = document.querySelector('.liked-serieList');
 
 //Elements
 const headerTitle = document.querySelector('.header-title');
