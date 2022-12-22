@@ -63,6 +63,7 @@ function homePage() {
   getTrendingSeriesPreview();
   getCategoriesPreview();
   getLikedSeries();
+  isEmptyLocalStorage();
 }
 
 function categoriesPage() {
@@ -162,7 +163,7 @@ function trendsPage() {
   genericSection.classList.remove("inactive");
   serieDetailSection.classList.add("inactive");
 
-  headerCategoryTitle.innerHTML = "Tendencias";
+  headerCategoryTitle.innerHTML = "Trends";
 
   getTrendingSeries();
   infiniteScroll = getPaginatedTrendingSeries;

@@ -1,4 +1,5 @@
 // Data
+let language = navigator.language;
 
 const API = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
@@ -7,7 +8,7 @@ const API = axios.create({
   },
   params: {
     api_key: API_KEY,
-    language: "es-CO",
+    language: language,
   },
 });
 
@@ -83,7 +84,13 @@ function createSeries(
     serieBtn.addEventListener('click', () => {
       serieBtn.classList.toggle('serie-btn--liked');
       likeSerie(serie);
-      getLikedSeries();
+
+      if (!location.hash == "") {
+        getLikedSeries();
+      } else {
+        getLikedSeries();
+        homePage();
+      }
     });
 
     if (lazyLoad) {
@@ -292,5 +299,16 @@ function getLikedSeries() {
 
   createSeries(seriesArray, likedSeriesListArticle, {lazyLoad: true, clean: true});
 
-  console.log(seriesArray);
+  // console.log(seriesArray);
+}
+
+function isEmptyLocalStorage() {
+  const likedSeries = likedSeriesList();
+  const seriesArray = Object.values(likedSeries);
+
+  if (seriesArray.length > 0) {
+    // console.log('LikedMovies: ' + moviesArray.length);
+  } else {
+    likedSeriesSection.classList.add('inactive');
+  }
 }
